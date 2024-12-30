@@ -44,5 +44,8 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(win, mouse_hook, NULL);
 	mlx_expose_hook(win, expose_hook, NULL);
 	mlx_loop_hook(win, loop_hook, NULL);
-	mlx_loop(mlx);
+//	mlx_loop(mlx);
+	mlx_destroy_window(mlx, win);
+	mlx_destroy_display(mlx);
+	free(mlx);
 }

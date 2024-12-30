@@ -35,3 +35,6 @@ fclean: clean
 
 bonus:
 	echo "Not implemented"
+
+debug: $(LIBFT) $(LIBMLX)
+	$(CC) $(CPPFLAGS) -Wall -Wextra -g3 $(SRC) -o $(NAME) $(LDLIBS)
