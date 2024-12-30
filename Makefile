@@ -6,8 +6,8 @@ LIBMLX = $(LIBMLX_DIR)/libmlx.a
 
 CC = gcc
 CPPFLAGS = -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
-CFLAGS = -Wall -Wextra -Werror -O2
-LDLIBS = -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lm
+CFLAGS = -Wall -Wextra -Werror -O3
+LDLIBS = -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lXext -lX11 -lm
 
 INCLUDES = so_long.h
 SRC = so_long.c
