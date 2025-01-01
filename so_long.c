@@ -1,51 +1,63 @@
 #include "so_long.h"
 
-int	expose_hook(void *param)
+void	exit_game(t_game_state *state)
 {
-	(void)param;
+	free(state->map);
+	mlx_destroy_window(state->mlx, state->window);
+	mlx_destroy_display(state->mlx);
+	free(state->mlx);
+	exit(0);
+}
+
+void	exit_error(t_game_state *state, char *msg)
+{
+	ft_printf("Error\n%s\n", msg);
+	exit_game(state);
+}
+
+int	expose_hook(void *state)
+{
+	(void)state;
 	return ft_printf("expose_hook\n");
 }
 
-int	key_hook(int keycode, void *param)
+int	key_hook(int keycode, void *state)
 {
-	(void)param;
+	if (keycode == KEY_ESC)
+		exit_game((t_game_state *)state);
 	return ft_printf("key_hook %i\n", keycode);
 }
 
-int	mouse_hook(int keycode, void *param)
+int	mouse_hook(int keycode, void *state)
 {
-	(void)param;
+	(void)state;
 	return ft_printf("mouse_hook %i\n", keycode);
 }
 
-int	loop_hook(void *param)
+int	loop_hook(void *state)
 {
-	(void)param;
+	(void)state;
 	return ft_printf("loop_hook\n");
 }
 
 int	main(int argc, char **argv)
 {
-	void	*map;
-	void	*mlx;
-	void	*win;
+	static t_game_state	state;
 
 	if (argc != 2)
-		return (ft_putendl_fd("Usage: ./so_long <ber_file_name>", 1), 0);
-	(void)map;
-	(void)argv;
-	mlx = mlx_init();
-	if (!mlx)
-		return (ft_putendl_fd("Error: Failed to initialize mlx.", 2), 2);
-	win = mlx_new_window(mlx, 200, 200, "Test MLX");
-	if (!win)
-		return (ft_putendl_fd("Error: Failed to open a window.", 2), 3);
-	mlx_key_hook(win, key_hook, NULL);
-	mlx_mouse_hook(win, mouse_hook, NULL);
-	mlx_expose_hook(win, expose_hook, NULL);
-	mlx_loop_hook(win, loop_hook, NULL);
-//	mlx_loop(mlx);
-	mlx_destroy_window(mlx, win);
-	mlx_destroy_display(mlx);
-	free(mlx);
+		return (ft_printf("Usage: ./so_long <ber_file_name>\n"), 0);
+	state.map = new_map_from_file(argv[1]);
+	if (!state.map)
+		exit_error(&state, "Invalid map.");
+	state.mlx = mlx_init();
+	if (!state.mlx)
+		exit_error(&state, "Failed to initialize mlx.");
+	state.window = mlx_new_window(state.mlx, 200, 200, "Test MLX");
+	if (!state.window)
+		exit_error(&state, "Failed to open a window.");
+	mlx_key_hook(state.window, key_hook, &state);
+	mlx_mouse_hook(state.window, mouse_hook, &state);
+	mlx_expose_hook(state.window, expose_hook, &state);
+	mlx_loop_hook(state.window, loop_hook, &state);
+	mlx_loop(state.mlx);
 }

@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
 AR = ar rcs
 
-HEADERS = libft.h
+HEADERS = libft.h get_next_line.h
 SRC = \
 	ft_isalpha.c \
 	ft_isdigit.c \
@@ -54,11 +54,14 @@ SRC_PRINTF = \
 	ft_printf.c \
 	ft_printf2.c \
 	ft_printf3.c
+SRC_GET_NEXT_LINE = \
+	get_next_line.c
 
 OBJ = \
 	$(SRC:.c=.o) \
 	$(SRC_BONUS:.c=.o) \
-	$(SRC_PRINTF:.c=.o)
+	$(SRC_PRINTF:.c=.o) \
+	$(SRC_GET_NEXT_LINE:.c=.o)
 
 .PHONY: all clean fclean re
 

@@ -10,12 +10,16 @@ CFLAGS = -Wall -Wextra -Werror -O3
 LDLIBS = -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lXext -lX11 -lm
 
 INCLUDES = so_long.h
-SRC = so_long.c
+SRC = \
+	so_long.c \
+	new_map_from_file.c
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re bonus
 
 all: $(NAME)
+
+$(NAME): $(OBJ)
 
 $(OBJ): $(INCLUDES) $(LIBFT) $(LIBMLX) Makefile
 
