@@ -55,26 +55,26 @@ static const char	*_parse_config(t_printf_config *config, const char *f)
 	return (f);
 }
 
-static int	_print_arg(const char **format, va_list args)
+static int	_print_arg(const char **format, va_list *args)
 {
 	int				len;
 	t_printf_config	conf;
 
 	*format = _parse_config(&conf, *format);
 	if (conf.format_id == 'c')
-		len = ft_printf_char(&conf, va_arg(args, int));
+		len = ft_printf_char(&conf, va_arg(*args, int));
 	else if (conf.format_id == 's')
-		len = ft_printf_str(&conf, va_arg(args, char *));
+		len = ft_printf_str(&conf, va_arg(*args, char *));
 	else if (conf.format_id == 'p')
-		len = ft_printf_ptr(&conf, va_arg(args, void *));
+		len = ft_printf_ptr(&conf, va_arg(*args, void *));
 	else if (conf.format_id == 'd' || conf.format_id == 'i')
-		len = ft_printf_nbr(&conf, va_arg(args, int));
+		len = ft_printf_nbr(&conf, va_arg(*args, int));
 	else if (conf.format_id == 'u')
-		len = ft_printf_base(&conf, va_arg(args, unsigned int), BASE10, "");
+		len = ft_printf_base(&conf, va_arg(*args, unsigned int), BASE10, "");
 	else if (conf.format_id == 'x')
-		len = ft_printf_base(&conf, va_arg(args, unsigned int), BASE16, "0x");
+		len = ft_printf_base(&conf, va_arg(*args, unsigned int), BASE16, "0x");
 	else if (conf.format_id == 'X')
-		len = ft_printf_base(&conf, va_arg(args, unsigned int), BASE16U, "0X");
+		len = ft_printf_base(&conf, va_arg(*args, unsigned int), BASE16U, "0X");
 	else if (conf.format_id == '%')
 		return (write(1, "%", 1));
 	else
@@ -95,7 +95,7 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-			len = _print_arg(&format, args);
+			len = _print_arg(&format, &args);
 		else
 			len = write(1, format++, 1);
 		if (len < 0)

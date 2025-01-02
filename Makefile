@@ -12,7 +12,7 @@ LDLIBS = -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lXext -lX11 -lm
 INCLUDES = so_long.h
 SRC = \
 	so_long.c \
-	new_map_from_file.c
+	fill_map_from_file.c
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re bonus

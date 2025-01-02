@@ -2,10 +2,13 @@
 
 void	exit_game(t_game_state *state)
 {
-	free(state->map);
-	mlx_destroy_window(state->mlx, state->window);
-	mlx_destroy_display(state->mlx);
-	free(state->mlx);
+	if (state->window)
+		mlx_destroy_window(state->mlx, state->window);
+	if (state->mlx)
+	{
+		mlx_destroy_display(state->mlx);
+		free(state->mlx);
+	}
 	exit(0);
 }
 
@@ -42,13 +45,13 @@ int	loop_hook(void *state)
 
 int	main(int argc, char **argv)
 {
-	static t_game_state	state;
+	t_game_state	state;
 
+	ft_bzero(&state, sizeof(state));
 	if (argc != 2)
 		return (ft_printf("Usage: ./so_long <ber_file_name>\n"), 0);
-	state.map = new_map_from_file(argv[1]);
-	if (!state.map)
-		exit_error(&state, "Invalid map.");
+	if (fill_map_from_file(&state.map, argv[1]) < 0)
+		exit_error(&state, "Failed to open map file.");
 	state.mlx = mlx_init();
 	if (!state.mlx)
 		exit_error(&state, "Failed to initialize mlx.");

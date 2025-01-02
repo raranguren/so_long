@@ -27,9 +27,9 @@ typedef struct s_game_state
 {
 	void		*mlx;
 	void		*window;
-	t_ber_map	*map;
+	t_ber_map	map;
 }	t_game_state;
 
-t_ber_map	*new_map_from_file(char *filename);
+int	fill_map_from_file(t_ber_map *map, char *filename);
 
 #endif
