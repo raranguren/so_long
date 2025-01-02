@@ -18,6 +18,12 @@ void	exit_error(t_game_state *state, char *msg)
 	exit_game(state);
 }
 
+int	destroy_window_hook(void *state)
+{
+	exit_game((t_game_state *)state);
+	return (0);
+}
+
 int	expose_hook(void *state)
 {
 	(void)state;
@@ -62,5 +68,6 @@ int	main(int argc, char **argv)
 	mlx_mouse_hook(state.window, mouse_hook, &state);
 	mlx_expose_hook(state.window, expose_hook, &state);
 	mlx_loop_hook(state.window, loop_hook, &state);
+	mlx_hook(state.window, DestroyNotify, None, destroy_window_hook, &state);
 	mlx_loop(state.mlx);
 }
