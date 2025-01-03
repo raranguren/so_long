@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:50 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/03 17:31:53 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:35:38 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	count_elements(t_ber_map *map, int *e, int *p, int *c)
  */
 static int	has_valid_path(t_ber_map map)
 {
-	int count;
+	int	count;
 	int	x;
 	int	y;
 
@@ -70,6 +70,7 @@ static int	has_valid_path(t_ber_map map)
 			while (x < map.cols)
 			{
 				if (map.grid[y][x] != '1' && map.grid[y][x] != 'P')
+				{
 					if (map.grid[y + 1][x] == 'P' \
 						|| map.grid[y - 1][x] == 'P' \
 						|| map.grid[y][x + 1] == 'P' \
@@ -78,6 +79,7 @@ static int	has_valid_path(t_ber_map map)
 						map.grid[y][x] = 'P';
 						count++;
 					}
+				}
 				x++;
 			}
 			y++;

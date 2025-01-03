@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:21:08 by rarangur          #+#    #+#             */
-/*   Updated: 2024/12/08 15:39:26 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/03 23:33:14 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
-# include "get_next_line.h"
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -58,6 +57,10 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
+//-------
+// lists
+//-------
+
 typedef struct s_list
 {
 	void			*content;
@@ -74,9 +77,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-//
+//-----------
 // ft_printf
-//
+//-----------
+
 # define BASE10 "0123456789"
 # define BASE16 "0123456789abcdef"
 # define BASE16U "0123456789ABCDEF"
@@ -104,5 +108,29 @@ int		ft_printf_base(t_printf_config *config, unsigned long nbr, \
 
 char	*ft_ultoa_base(unsigned long n, char *base);
 char	*ft_str_justify(char const *src, int min_field, char filler, int align);
+
+//---------------
+// get_next_line
+//---------------
+
+# ifndef GET_NEXT_LINE_BUFFER_SIZE
+#  define GET_NEXT_LINE_BUFFER_SIZE 42
+# endif
+
+typedef struct s_buffer
+{
+	ssize_t	size;
+	size_t	start;
+	char	data[GET_NEXT_LINE_BUFFER_SIZE];
+}	t_buffer;
+
+typedef struct s_line
+{
+	size_t	len;
+	int		complete;
+	char	*str;
+}	t_line;
+
+char	*get_next_line(int fd);
 
 #endif

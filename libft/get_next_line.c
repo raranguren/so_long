@@ -6,11 +6,11 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 15:33:18 by rarangur          #+#    #+#             */
-/*   Updated: 2024/11/26 09:34:37 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/03 23:34:10 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static void	init_line(t_line *line)
 {

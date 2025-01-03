@@ -4,7 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
 AR = ar rcs
 
-HEADERS = libft.h get_next_line.h
+HEADERS = libft.h
 SRC = \
 	ft_isalpha.c \
 	ft_isdigit.c \
@@ -39,29 +39,22 @@ SRC = \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
-SRC_BONUS = \
-	ft_lstnew_bonus.c \
-	ft_lstadd_front_bonus.c \
-	ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c \
-	ft_lstadd_back_bonus.c\
-	ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c \
-	ft_lstiter_bonus.c \
-	ft_lstmap_bonus.c
-SRC_PRINTF = \
+	ft_putnbr_fd.c \
+	ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c\
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c \
 	ft_printf.c \
 	ft_printf2.c \
-	ft_printf3.c
-SRC_GET_NEXT_LINE = \
+	ft_printf3.c \
 	get_next_line.c
 
-OBJ = \
-	$(SRC:.c=.o) \
-	$(SRC_BONUS:.c=.o) \
-	$(SRC_PRINTF:.c=.o) \
-	$(SRC_GET_NEXT_LINE:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re
 
@@ -73,7 +66,7 @@ $(OBJ): $(HEADERS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
