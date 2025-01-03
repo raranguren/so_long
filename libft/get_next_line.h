@@ -16,7 +16,7 @@
 # include "libft.h"
 
 # ifndef GET_NEXT_LINE_BUFFER_SIZE
-#  define GET_NEXT_LINE_BUFFER_SIZE 10000
+#  define GET_NEXT_LINE_BUFFER_SIZE 42
 # endif
 
 typedef struct s_buffer

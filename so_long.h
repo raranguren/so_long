@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
+/*   Updated: 2025/01/03 17:31:37 by rarangur         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -30,6 +42,7 @@ typedef struct s_game_state
 	t_ber_map	map;
 }	t_game_state;
 
-int	fill_map_from_file(t_ber_map *map, char *filename);
+int		fill_map_from_file(t_ber_map *map, char *filename);
+char	*map_validation_error(t_ber_map *map);
 
 #endif
