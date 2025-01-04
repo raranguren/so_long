@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/03 17:31:58 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/04 23:27:05 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	exit_game(t_game_state *state, int return_value)
 
 void	exit_error(t_game_state *state, char *msg, int error_value)
 {
-	ft_printf("Error\n%s\n", msg);
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(msg, 2);
 	exit_game(state, error_value);
 }
 
