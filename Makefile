@@ -1,15 +1,14 @@
 NAME = so_long
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBMLX_DIR = libmlx
-LIBMLX = $(LIBMLX_DIR)/libmlx.a
 
 CC = gcc
-CPPFLAGS = -I $(LIBFT_DIR) -I $(LIBMLX_DIR)
+CPPFLAGS = -I $(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror -O3
-LDLIBS = -L $(LIBFT_DIR) -L $(LIBMLX_DIR) -lft -lmlx -lXext -lX11 -lm
+LDFLAGS = -L $(LIBFT_DIR)
+LDLIBS = -lft -lmlx -lXext -lX11 -lm
 
-INCLUDES = so_long.h
+HEADERS = so_long.h
 SRC = \
 	so_long.c \
 	fill_map_from_file.c \
@@ -22,24 +21,21 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 
-$(OBJ): $(INCLUDES) $(LIBFT) $(LIBMLX) Makefile
+$(OBJ): $(HEADERS) $(LIBFT) Makefile
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
-
-$(LIBMLX):
-	make -C $(LIBMLX_DIR)
+	make -C $(LIBFT_DIR) --silent
 
 clean:
-	make -C $(LIBFT_DIR) fclean
-	make -C $(LIBMLX_DIR) clean
+	make -C $(LIBFT_DIR) fclean --silent
 	rm -fr $(OBJ)
 
 fclean: clean
 	rm -fr $(NAME)
 
-bonus:
-	echo "Not implemented"
+re: fclean all
 
-debug: $(LIBFT) $(LIBMLX)
+bonus:
+
+debug: $(LIBFT)
 	$(CC) $(CPPFLAGS) -Wall -Wextra -g3 $(SRC) -o $(NAME) $(LDLIBS)

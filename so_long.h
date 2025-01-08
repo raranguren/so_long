@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/03 17:31:37 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/08 16:12:47 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "libft.h"
-# include "mlx.h"
-# include "mlx_int.h"
+# include <mlx.h>
+# include <mlx_int.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
