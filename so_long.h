@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/08 16:12:47 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:21:06 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-
-# define KEY_ESC 65307
-
 
 # ifndef BER_MAP_MAX_SIZE
 #  define BER_MAP_MAX_SIZE 80

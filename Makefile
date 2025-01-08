@@ -38,4 +38,4 @@ re: fclean all
 bonus:
 
 debug: $(LIBFT)
-	$(CC) $(CPPFLAGS) -Wall -Wextra -g3 $(SRC) -o $(NAME) $(LDLIBS)
+	$(CC) $(CPPFLAGS) -Wall -Wextra -g3 $(LDFLAGS) $(SRC) -o $(NAME) $(LDLIBS)
