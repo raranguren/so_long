@@ -10,8 +10,11 @@ LDLIBS = -lft -lmlx -lXext -lX11 -lm
 
 HEADERS = so_long.h
 SRC = \
+	map_display.c \
 	map_from_file.c \
 	map_validate.c \
+	sprite_to_image.c \
+	sprites_from_files.c \
 	start_game.c \
 	so_long.c
 OBJ = $(SRC:.c=.o)
