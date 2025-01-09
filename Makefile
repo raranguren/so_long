@@ -16,6 +16,7 @@ SRC = \
 	sprite_to_image.c \
 	sprites_from_files.c \
 	start_game.c \
+	move_player.c \
 	so_long.c
 OBJ = $(SRC:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 14:07:24 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:42:49 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_game_state
 	void		*window;
 	t_ber_map	map;
 	t_sprites	sprites;
+	int			ended;
 }	t_game_state;
 
 int		map_from_file(t_ber_map *map, char *filename);
@@ -63,5 +64,6 @@ char	*map_validate(t_ber_map *map);
 char	*start_game(t_game_state *state);
 void	map_display(t_game_state *state, int x, int y);
 void	*sprite_to_image(t_game_state *state, char code);
+void	move_player(t_game_state *state, int dir_x, int dir_y);
 
 #endif
