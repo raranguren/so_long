@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_error.c                             :+:      :+:    :+:   */
+/*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:50 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/03 17:35:38 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:50:08 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ static int	count_elements(t_ber_map *map, int *e, int *p, int *c)
 	return (0);
 }
 
+/* Helper function for 'has_valid_path' */
+static int	grow_p(t_ber_map *map, int x, int y)
+{
+	if (map->grid[y][x] == 'P' || map->grid[y][x] == '1')
+		return (0);
+	if (map->grid[y][x + 1] == 'P' || map->grid[y][x - 1] == 'P' \
+			|| map->grid[y + 1][x] == 'P' || map->grid[y - 1][x] == 'P')
+	{
+		map->grid[y][x] = 'P';
+		return (1);
+	}
+	return (0);
+}
+
 /*
  * Verifies that the 'P' player can reach all collectibles 'P' and the exit 'E'.
  * Note that the map is passed as value, not as pointer. The algorithm sets all
@@ -63,23 +77,13 @@ static int	has_valid_path(t_ber_map map)
 	while (count)
 	{
 		count = 0;
-		y = 0;
+		y = 1;
 		while (y < map.rows)
 		{
-			x = 0;
+			x = 1;
 			while (x < map.cols)
 			{
-				if (map.grid[y][x] != '1' && map.grid[y][x] != 'P')
-				{
-					if (map.grid[y + 1][x] == 'P' \
-						|| map.grid[y - 1][x] == 'P' \
-						|| map.grid[y][x + 1] == 'P' \
-						|| map.grid[y][x - 1] == 'P')
-					{
-						map.grid[y][x] = 'P';
-						count++;
-					}
-				}
+				count += grow_p(&map, x, y);
 				x++;
 			}
 			y++;
@@ -96,7 +100,7 @@ static int	has_valid_path(t_ber_map map)
 static int	has_border(t_ber_map *map)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = 0;
 	y = map->rows - 1;
@@ -121,7 +125,7 @@ static int	has_border(t_ber_map *map)
  * Returns a string explaining the problem found in a map.
  * NULL if the map is valid.
  */
-char *map_validation_error(t_ber_map *map)
+char	*map_validate(t_ber_map *map)
 {
 	int	count_exits;
 	int	count_starts;

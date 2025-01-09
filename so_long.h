@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/08 17:21:06 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/08 23:56:45 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef struct s_game_state
 	t_ber_map	map;
 }	t_game_state;
 
-int		fill_map_from_file(t_ber_map *map, char *filename);
-char	*map_validation_error(t_ber_map *map);
+int		map_from_file(t_ber_map *map, char *filename);
+char	*map_validate(t_ber_map *map);
+char	*start_game(t_game_state *state);
 
 #endif

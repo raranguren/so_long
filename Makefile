@@ -10,9 +10,10 @@ LDLIBS = -lft -lmlx -lXext -lX11 -lm
 
 HEADERS = so_long.h
 SRC = \
-	so_long.c \
-	fill_map_from_file.c \
-	map_validation_error.c
+	map_from_file.c \
+	map_validate.c \
+	start_game.c \
+	so_long.c
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re bonus
