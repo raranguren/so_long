@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:50 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/08 23:50:08 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 22:19:24 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Counts the special characters in a map.
  * Returns -1 if it finds invalid characters or lines have different sizes.
  */
-static int	count_elements(t_ber_map *map, int *e, int *p, int *c)
+static int	count_elements(t_map *map, int *e, int *p, int *c)
 {
 	int	x;
 	int	y;
@@ -45,59 +45,11 @@ static int	count_elements(t_ber_map *map, int *e, int *p, int *c)
 	return (0);
 }
 
-/* Helper function for 'has_valid_path' */
-static int	grow_p(t_ber_map *map, int x, int y)
-{
-	if (map->grid[y][x] == 'P' || map->grid[y][x] == '1')
-		return (0);
-	if (map->grid[y][x + 1] == 'P' || map->grid[y][x - 1] == 'P' \
-			|| map->grid[y + 1][x] == 'P' || map->grid[y - 1][x] == 'P')
-	{
-		map->grid[y][x] = 'P';
-		return (1);
-	}
-	return (0);
-}
-
-/*
- * Verifies that the 'P' player can reach all collectibles 'P' and the exit 'E'.
- * Note that the map is passed as value, not as pointer. The algorithm sets all
- * reachable places with a 'P' and then checks that the exit and collectibles
- * are no longer there.
- * It is assumed that the map is closed with '1' borders.
- * Returns boolean (1 for valid, 0 for invalid)
- */
-static int	has_valid_path(t_ber_map map)
-{
-	int	count;
-	int	x;
-	int	y;
-
-	count = 1;
-	while (count)
-	{
-		count = 0;
-		y = 1;
-		while (y < map.rows)
-		{
-			x = 1;
-			while (x < map.cols)
-			{
-				count += grow_p(&map, x, y);
-				x++;
-			}
-			y++;
-		}
-	}
-	count_elements(&map, &count, &x, &count);
-	return (count == 0);
-}
-
 /*
  * Checks that the map is closed/surrounded by '1'.
  * Returns boolean (1 for closed map, 0 for open map)
  */
-static int	has_border(t_ber_map *map)
+static int	has_border(t_map *map)
 {
 	int	x;
 	int	y;
@@ -125,7 +77,7 @@ static int	has_border(t_ber_map *map)
  * Returns a string explaining the problem found in a map.
  * NULL if the map is valid.
  */
-char	*map_validate(t_ber_map *map)
+char	*map_validate(t_map *map)
 {
 	int	count_exits;
 	int	count_starts;
@@ -143,7 +95,7 @@ char	*map_validate(t_ber_map *map)
 		return ("The map must have at least 1 collectible.");
 	if (!has_border(map))
 		return ("The map must be closed/surrounded by walls.");
-	if (!has_valid_path(*map))
+	if (!map_has_valid_path(map))
 		return ("The map must have a valid path.");
 	return (NULL);
 }

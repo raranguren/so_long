@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:15:49 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 14:46:37 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 20:27:27 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_display(t_game_state *state, int x, int y)
+void	map_display(t_state *state, int x, int y)
 {
 	void	*img;
 	int		pos_x;

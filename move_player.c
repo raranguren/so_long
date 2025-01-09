@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 15:54:18 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:51:06 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	find_player_in_map(t_ber_map *map, int *x, int *y)
+static void	find_player_in_map(t_map *map, int *x, int *y)
 {
 	*y = 1;
 	while (*y < map->rows)
@@ -28,7 +28,7 @@ static void	find_player_in_map(t_ber_map *map, int *x, int *y)
 	}
 }
 
-static int	collectibles_exist(t_ber_map *map)
+static int	collectibles_exist(t_map *map)
 {
 	int	x;
 	int	y;
@@ -48,7 +48,7 @@ static int	collectibles_exist(t_ber_map *map)
 	return (0);
 }
 
-void	move_player(t_game_state *state, int dir_x, int dir_y)
+void	move_player(t_state *state, int dir_x, int dir_y)
 {
 	static int	player_x;
 	static int	player_y;

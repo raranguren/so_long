@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 13:32:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 14:06:48 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:49:51 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*sprite_from_file(t_game_state *state, char *filename)
+void	*sprite_from_file(t_state *state, char *filename)
 {
 	int		height;
 	int		width;
@@ -29,7 +29,7 @@ void	*sprite_from_file(t_game_state *state, char *filename)
 	return (NULL);
 }
 
-int	sprites_from_files(t_game_state *state)
+int	sprites_from_files(t_state *state)
 {
 	state->sprites.empty = sprite_from_file(state, SPRITE_FILE_0);
 	state->sprites.wall = sprite_from_file(state, SPRITE_FILE_1);

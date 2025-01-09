@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 15:45:09 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:50:26 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	destroy_window_hook(t_game_state *state)
+int	destroy_window_hook(t_state *state)
 {
 	mlx_destroy_window(state->mlx, state->window);
 	state->window = NULL;
@@ -20,7 +20,7 @@ int	destroy_window_hook(t_game_state *state)
 	return (0);
 }
 
-int	key_hook(int keycode, t_game_state *state)
+int	key_hook(int keycode, t_state *state)
 {
 	if (keycode == XK_Escape)
 		return (destroy_window_hook(state));
@@ -37,7 +37,7 @@ int	key_hook(int keycode, t_game_state *state)
 	return (0);
 }
 
-int	expose_hook(t_game_state *state)
+int	expose_hook(t_state *state)
 {
 	int	x;
 	int	y;
@@ -56,7 +56,7 @@ int	expose_hook(t_game_state *state)
 	return (0);
 }
 
-char	*start_game(t_game_state *state)
+char	*start_game(t_state *state)
 {
 	if (sprites_from_files(state) < 0)
 		return ("Error loading sprites from files.");

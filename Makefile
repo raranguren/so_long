@@ -13,6 +13,7 @@ SRC = \
 	map_display.c \
 	map_from_file.c \
 	map_validate.c \
+	map_has_valid_path.c \
 	sprite_to_image.c \
 	sprites_from_files.c \
 	start_game.c \

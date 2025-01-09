@@ -6,14 +6,25 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 14:02:58 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 22:50:17 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	exit_game(t_game_state *state, int return_value)
+void	clear_map(t_map *map)
 {
+	int	row;
+
+	row = 0;
+	while (row < map->rows)
+		free(map->grid[row++]);
+	free(map->grid);
+}
+
+void	exit_game(t_state *state, int exit_value)
+{
+	clear_map(&state->map);
 	if (state->window)
 		mlx_destroy_window(state->mlx, state->window);
 	if (state->sprites.empty)
@@ -31,10 +42,10 @@ void	exit_game(t_game_state *state, int return_value)
 		mlx_destroy_display(state->mlx);
 		free(state->mlx);
 	}
-	exit(return_value);
+	exit(exit_value);
 }
 
-void	exit_error(t_game_state *state, char *msg, int error_value)
+void	exit_error(t_state *state, char *msg, int error_value)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(msg, 2);
@@ -43,8 +54,8 @@ void	exit_error(t_game_state *state, char *msg, int error_value)
 
 int	main(int argc, char **argv)
 {
-	t_game_state	state;
-	char			*err;
+	t_state	state;
+	char	*err;
 
 	ft_bzero(&state, sizeof(state));
 	if (argc != 2)
