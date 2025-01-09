@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/08 23:56:45 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 00:12:00 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # ifndef BER_MAP_MAX_SIZE
 #  define BER_MAP_MAX_SIZE 80
 # endif
+
+# define SPRITE_SIZE 32
+# define WINDOW_TITLE "So long (rarangur)"
 
 typedef struct s_ber_map
 {
