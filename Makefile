@@ -6,7 +6,7 @@ CC = gcc
 CPPFLAGS = -I $(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror -O3
 LDFLAGS = -L $(LIBFT_DIR)
-LDLIBS = -lft -lmlx -lXext -lX11 -lm
+LDLIBS = -lft -lmlx -lXext -lX11
 
 HEADERS = so_long.h
 SRC = \

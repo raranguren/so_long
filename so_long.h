@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 15:42:49 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/09 20:16:42 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include "libft.h"
 # include <mlx.h>
 # include <mlx_int.h>
-# include <stdlib.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <math.h>
 
 # ifndef BER_MAP_MAX_SIZE
 #  define BER_MAP_MAX_SIZE 80
