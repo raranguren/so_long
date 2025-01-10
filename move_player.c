@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:15:19 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/10 23:39:19 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ static int	collectibles_exist(t_map *map)
 
 void	moves_display(t_state *state)
 {
-	ft_printf("Movements: %i\n", state->moves);	
+	if (state->moves > 1)
+		ft_printf("\x1bM");
+	ft_printf("Movements: %i\n", state->moves);
 }
 
 void	move_player(t_state *state, int dir_x, int dir_y)

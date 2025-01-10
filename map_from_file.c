@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:45 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:21:18 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/10 23:31:34 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ int	init_map(t_map *map, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (-1);
-	while (1)
+	line = get_next_line(fd);
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
 		len = ft_strlen(line);
 		if (line[len - 1] == '\n')
 			len--;
@@ -34,6 +32,7 @@ int	init_map(t_map *map, char *filename)
 		if (len > map->cols)
 			map->cols = len;
 		map->rows++;
+		line = get_next_line(fd);
 	}
 	close(fd);
 	map->grid = malloc(map->rows * sizeof(char *));
