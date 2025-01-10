@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 21:50:26 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/10 23:08:01 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	key_hook(int keycode, t_state *state)
 {
 	if (keycode == XK_Escape)
 		return (destroy_window_hook(state));
-	else if (keycode == XK_w)
+	else if (keycode == XK_w || keycode == XK_Up)
 		move_player(state, 0, -1);
-	else if (keycode == XK_s)
+	else if (keycode == XK_s || keycode == XK_Down)
 		move_player(state, 0, 1);
-	else if (keycode == XK_a)
+	else if (keycode == XK_a || keycode == XK_Left)
 		move_player(state, -1, 0);
-	else if (keycode == XK_d)
+	else if (keycode == XK_d || keycode == XK_Right)
 		move_player(state, 1, 0);
 	if (state->ended)
 		destroy_window_hook(state);

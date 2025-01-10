@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 21:51:06 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/10 23:15:19 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static int	collectibles_exist(t_map *map)
 	return (0);
 }
 
+void	moves_display(t_state *state)
+{
+	ft_printf("Movements: %i\n", state->moves);	
+}
+
 void	move_player(t_state *state, int dir_x, int dir_y)
 {
 	static int	player_x;
@@ -71,4 +76,6 @@ void	move_player(t_state *state, int dir_x, int dir_y)
 	player_y += dir_y;
 	state->map.grid[player_y][player_x] = 'P';
 	map_display(state, player_x, player_y);
+	state->moves++;
+	moves_display(state);
 }

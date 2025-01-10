@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 22:20:30 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/10 23:10:51 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ typedef struct s_state
 	void		*mlx;
 	void		*window;
 	t_map		map;
+	t_map		viewport;
+	int			viewport_x;
+	int			viewport_y;
 	t_sprites	sprites;
+	int			moves;
 	int			ended;
 }	t_state;
 
