@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:10:51 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/11 23:08:39 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <fcntl.h>
 
 # define WINDOW_TITLE "So long ! (rarangur)"
-# define SPRITE_FILE_0 "textures/ugly-0.xpm"
-# define SPRITE_FILE_1 "textures/ugly-1.xpm"
-# define SPRITE_FILE_P "textures/ugly-p.xpm"
-# define SPRITE_FILE_C "textures/ugly-c.xpm"
-# define SPRITE_FILE_E "textures/ugly-e.xpm"
-# define SPRITE_SIZE 32
+# define SPRITE_FILE_0 "textures/bu-0.xpm"
+# define SPRITE_FILE_1 "textures/bu-1.xpm"
+# define SPRITE_FILE_P "textures/bu-p.xpm"
+# define SPRITE_FILE_C "textures/bu-c.xpm"
+# define SPRITE_FILE_E "textures/bu-e.xpm"
+# define SPRITE_SIZE 64
 
 typedef struct s_sprites
 {
