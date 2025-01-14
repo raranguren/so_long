@@ -30,7 +30,7 @@ $(NAME): $(OBJ)
 $(OBJ): $(HEADERS) $(LIBFT) Makefile
 
 $(LIBFT):
-	make -C $(LIBFT_DIR) --silent
+	make -C $(LIBFT_DIR) all clean --silent
 
 clean:
 	make -C $(LIBFT_DIR) fclean --silent

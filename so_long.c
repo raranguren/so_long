@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 22:50:17 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/14 08:17:07 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	main(int argc, char **argv)
 		exit_error(&state, "Failed to initialize mlx.", 3);
 	err = start_game(&state);
 	if (err)
-		exit_error(&state, err, 3);
+		exit_error(&state, err, 4);
 	exit_game(&state, 0);
 }
