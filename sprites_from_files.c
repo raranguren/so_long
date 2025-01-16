@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 13:32:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 21:49:51 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:23:00 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*sprite_from_file(t_state *state, char *filename)
+static void	*sprite_from_file(t_state *state, char *filename)
 {
 	int		height;
 	int		width;

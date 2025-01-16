@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/14 08:17:07 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:51:19 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	clear_map(t_map *map)
+static void	clear_map(t_map *map)
 {
 	int	row;
 
@@ -22,9 +22,10 @@ void	clear_map(t_map *map)
 	free(map->grid);
 }
 
-void	exit_game(t_state *state, int exit_value)
+static void	exit_game(t_state *state, int exit_value)
 {
 	clear_map(&state->map);
+	clear_map(&state->viewport);
 	if (state->window)
 		mlx_destroy_window(state->mlx, state->window);
 	if (state->sprites.empty)
@@ -45,7 +46,7 @@ void	exit_game(t_state *state, int exit_value)
 	exit(exit_value);
 }
 
-void	exit_error(t_state *state, char *msg, int error_value)
+static void	exit_error(t_state *state, char *msg, int error_value)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(msg, 2);

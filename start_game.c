@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:08:01 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:43:13 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	destroy_window_hook(t_state *state)
+static int	destroy_window_hook(t_state *state)
 {
 	mlx_destroy_window(state->mlx, state->window);
 	state->window = NULL;
@@ -20,7 +20,7 @@ int	destroy_window_hook(t_state *state)
 	return (0);
 }
 
-int	key_hook(int keycode, t_state *state)
+static int	key_hook(int keycode, t_state *state)
 {
 	if (keycode == XK_Escape)
 		return (destroy_window_hook(state));
@@ -37,22 +37,9 @@ int	key_hook(int keycode, t_state *state)
 	return (0);
 }
 
-int	expose_hook(t_state *state)
+static int	expose_hook(t_state *state)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < state->map.rows)
-	{
-		x = 0;
-		while (x < state->map.cols)
-		{
-			map_display(state, x, y);
-			x++;
-		}
-		y++;
-	}
+	move_player(state, 0, 0);
 	return (0);
 }
 
@@ -60,8 +47,11 @@ char	*start_game(t_state *state)
 {
 	if (sprites_from_files(state) < 0)
 		return ("Error loading sprites from files.");
-	state->window = mlx_new_window(state->mlx, SPRITE_SIZE * state->map.cols, \
-			SPRITE_SIZE * state->map.rows, WINDOW_TITLE);
+	if (init_viewport_for_screen_size(state))
+		return ("Not enough memory for scroll system.");
+	state->window = mlx_new_window(state->mlx, \
+			SPRITE_SIZE * state->viewport.cols, \
+			SPRITE_SIZE * state->viewport.rows, WINDOW_TITLE);
 	if (!state->window)
 		return ("Unable to create a window.");
 	mlx_expose_hook(state->window, expose_hook, state);

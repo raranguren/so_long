@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:39:19 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:10:33 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,33 @@ static int	collectibles_exist(t_map *map)
 	return (0);
 }
 
-void	moves_display(t_state *state)
+static void	center_player(t_state *state, int player_x, int player_y)
 {
-	if (state->moves > 1)
-		ft_printf("\x1bM");
-	ft_printf("Movements: %i\n", state->moves);
+	int	padding;
+	int	dist;
+
+	padding = state->viewport.cols * SCROLL_TRIGGER_PERCENT / 100;
+	dist = player_x - state->scroll_x;
+	if (dist < padding)
+		state->scroll_x -= padding - dist;
+	dist = state->viewport.cols - dist - 1;
+	if (dist < padding)
+		state->scroll_x += padding - dist;
+	if (state->scroll_x < 0)
+		state->scroll_x = 0;
+	else if (state->scroll_x + state->viewport.cols > state->map.cols)
+		state->scroll_x = state->map.cols - state->viewport.cols;
+	padding = state->viewport.rows * SCROLL_TRIGGER_PERCENT / 100;
+	dist = player_y - state->scroll_y;
+	if (dist < padding)
+		state->scroll_y -= padding - dist;
+	dist = state->viewport.rows - dist - 1;
+	if (dist < padding)
+		state->scroll_y += padding - dist;
+	if (state->scroll_y < 0)
+		state->scroll_y = 0;
+	else if (state->scroll_y + state->viewport.rows > state->map.rows)
+		state->scroll_y = state->map.rows - state->viewport.rows;
 }
 
 void	move_player(t_state *state, int dir_x, int dir_y)
@@ -63,21 +85,23 @@ void	move_player(t_state *state, int dir_x, int dir_y)
 
 	if (player_x == 0)
 		find_player_in_map(&state->map, &player_x, &player_y);
-	destination = state->map.grid[player_y + dir_y][player_x + dir_x];
-	if (destination == '1')
-		return ;
-	if (destination == 'E')
+	if (dir_x || dir_y)
 	{
-		if (collectibles_exist(&state->map))
+		destination = state->map.grid[player_y + dir_y][player_x + dir_x];
+		if (destination == '1')
 			return ;
-		state->ended = 1;
+		if (destination == 'E')
+		{
+			if (collectibles_exist(&state->map))
+				return ;
+			state->ended = 1;
+		}
+		state->map.grid[player_y][player_x] = '0';
+		player_x += dir_x;
+		player_y += dir_y;
+		state->map.grid[player_y][player_x] = 'P';
+		center_player(state, player_x, player_y);
+		state->moves++;
 	}
-	state->map.grid[player_y][player_x] = '0';
-	map_display(state, player_x, player_y);
-	player_x += dir_x;
-	player_y += dir_y;
-	state->map.grid[player_y][player_x] = 'P';
-	map_display(state, player_x, player_y);
-	state->moves++;
-	moves_display(state);
+	refresh_display(state);
 }

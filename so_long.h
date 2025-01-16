@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/16 13:20:11 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:05:00 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define SPRITE_FILE_C "textures/bu-c.xpm"
 # define SPRITE_FILE_E "textures/bu-e.xpm"
 # define SPRITE_SIZE 64
+# define WINDOW_SIZE_PERCENT 50
+# define SCROLL_TRIGGER_PERCENT 30
 
 typedef struct s_sprites
 {
@@ -48,8 +50,8 @@ typedef struct s_state
 	void		*window;
 	t_map		map;
 	t_map		viewport;
-	int			viewport_x;
-	int			viewport_y;
+	int			scroll_x;
+	int			scroll_y;
 	t_sprites	sprites;
 	int			moves;
 	int			ended;
@@ -60,7 +62,8 @@ int		sprites_from_files(t_state *state);
 char	*map_validate(t_map *map);
 int		map_has_valid_path(t_map *map);
 char	*start_game(t_state *state);
-void	map_display(t_state *state, int x, int y);
+int		init_viewport_for_screen_size(t_state *state);
+void	refresh_display(t_state *state);
 void	*sprite_to_image(t_state *state, char code);
 void	move_player(t_state *state, int dir_x, int dir_y);
 

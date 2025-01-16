@@ -6,13 +6,13 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:45 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/10 23:31:34 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:21:21 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	init_map(t_map *map, char *filename)
+static int	init_map(t_map *map, char *filename)
 {
 	int		fd;
 	char	*line;
@@ -41,7 +41,7 @@ int	init_map(t_map *map, char *filename)
 	return (0);
 }
 
-int	fill_map(t_map *map, char *filename)
+static int	fill_map(t_map *map, char *filename)
 {
 	int		fd;
 	char	*line;
