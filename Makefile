@@ -1,11 +1,10 @@
 NAME = so_long
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT = libft/libft.a
 
-CC = gcc
-CPPFLAGS = -I $(LIBFT_DIR)
+CC = cc
+CPPFLAGS = -I libft -I ../minilibx-linux
 CFLAGS = -Wall -Wextra -Werror -O3
-LDFLAGS = -L $(LIBFT_DIR)
+LDFLAGS = -L libft -L ../minilibx-linux
 LDLIBS = -lft -lmlx -lXext -lX11
 
 HEADERS = so_long.h
@@ -25,15 +24,15 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 
-$(OBJ): $(HEADERS) $(LIBFT) Makefile
+$(OBJ): $(HEADERS) Makefile
 
 $(LIBFT):
-	make -C $(LIBFT_DIR) all clean --silent
+	make -C libft all clean --silent
 
 clean:
-	make -C $(LIBFT_DIR) fclean --silent
+	make -C libft fclean --silent
 	rm -fr $(OBJ)
 
 fclean: clean

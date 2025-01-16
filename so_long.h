@@ -6,14 +6,14 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/11 23:08:39 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:20:11 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "libft.h"
+# include <libft.h>
 # include <mlx.h>
 # include <mlx_int.h>
 # include <fcntl.h>
