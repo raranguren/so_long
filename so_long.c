@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/16 17:51:19 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/17 08:20:34 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&state, sizeof(state));
 	if (argc != 2)
-		return (ft_printf("Usage: ./so_long <ber_file_name>\n"), 0);
+	{
+		ft_printf("Usage: ./so_long <ber_file_name>\n");
+		return (0);
+	}
 	if (map_from_file(&state.map, argv[1]) < 0)
 		exit_error(&state, "Failed to open map file.", 1);
 	err = map_validate(&state.map);
