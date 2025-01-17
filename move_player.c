@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/16 18:10:33 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/17 07:11:13 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void	move_player(t_state *state, int dir_x, int dir_y)
 		player_x += dir_x;
 		player_y += dir_y;
 		state->map.grid[player_y][player_x] = 'P';
-		center_player(state, player_x, player_y);
 		state->moves++;
 	}
+	center_player(state, player_x, player_y);
 	refresh_display(state);
 }
