@@ -6,7 +6,7 @@
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:35:52 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/16 17:39:32 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:46:29 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	init_viewport_for_screen_size(t_state *state)
 	int		y;
 
 	mlx_get_screen_size(state->mlx, &x, &y);
-	x = (x / SPRITE_SIZE) * WINDOW_SIZE_PERCENT / 100;
-	y = x;
+	y = y / SPRITE_SIZE - 1;
+	x = y;
 	if (y > state->map.rows)
 		y = state->map.rows;
 	if (x > state->map.cols)

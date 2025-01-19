@@ -25,7 +25,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 
 $(OBJ): $(HEADERS) Makefile
 

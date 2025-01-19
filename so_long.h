@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/19 13:02:42 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:09:54 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define SPRITE_FILE_C "textures/deep_c.xpm"
 # define SPRITE_FILE_E "textures/deep_e.xpm"
 # define SPRITE_SIZE 42
-# define WINDOW_SIZE_PERCENT 50
 # define SCROLL_TRIGGER_PERCENT 30
 
 typedef struct s_sprites
