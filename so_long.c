@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/17 08:20:34 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:12:04 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	clear_map(t_map *map)
 	free(map->grid);
 }
 
-static void	exit_game(t_state *state, int exit_value)
+static void	clear_state(t_state *state)
 {
 	clear_map(&state->map);
 	clear_map(&state->viewport);
@@ -43,6 +43,11 @@ static void	exit_game(t_state *state, int exit_value)
 		mlx_destroy_display(state->mlx);
 		free(state->mlx);
 	}
+}
+
+static void	exit_game(t_state *state, int exit_value)
+{
+	clear_state(state);
 	exit(exit_value);
 }
 
@@ -59,9 +64,11 @@ int	main(int argc, char **argv)
 	char	*err;
 
 	ft_bzero(&state, sizeof(state));
-	if (argc != 2)
+	if (argc != 2 || ft_strncmp(".ber", argv[1] + ft_strlen(argv[1]) - 4, 4))
 	{
-		ft_printf("Usage: ./so_long <ber_file_name>\n");
+		ft_putendl_fd("Usage: ./so_long <ber_file_name>", 1);
+		ft_putendl_fd("(File must be of type .ber and contain a valid map)", 1);
+		ft_putendl_fd("See examples in maps/", 1);
 		return (0);
 	}
 	if (map_from_file(&state.map, argv[1]) < 0)
