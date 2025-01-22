@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/19 13:15:37 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:52:46 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ static int	key_hook(int keycode, t_state *state)
 
 static int	expose_hook(t_state *state)
 {
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < state->viewport.rows)
+	{
+		x = 0;
+		while (x < state->viewport.cols)
+		{
+			state->viewport.grid[y][x] = 0;
+			x++;
+		}
+		y++;
+	}
 	move_player(state, 0, 0);
 	return (0);
 }
