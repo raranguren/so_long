@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:31 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/19 13:09:54 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 04:18:59 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <fcntl.h>
 
 # define WINDOW_TITLE "So long ! (rarangur)"
-# define SPRITE_FILE_0 "textures/deep_0.xpm"
-# define SPRITE_FILE_1 "textures/deep_1.xpm"
-# define SPRITE_FILE_P "textures/deep_p.xpm"
-# define SPRITE_FILE_C "textures/deep_c.xpm"
-# define SPRITE_FILE_E "textures/deep_e.xpm"
+# define SPRITE_FILE_0 "xpm/deep_0.xpm"
+# define SPRITE_FILE_1 "xpm/deep_1.xpm"
+# define SPRITE_FILE_P "xpm/deep_p.xpm"
+# define SPRITE_FILE_C "xpm/deep_c.xpm"
+# define SPRITE_FILE_E "xpm/deep_e.xpm"
 # define SPRITE_SIZE 42
 # define SCROLL_TRIGGER_PERCENT 30
 

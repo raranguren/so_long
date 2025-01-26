@@ -1,24 +1,25 @@
 NAME = so_long
+NAME_BONUS = so_long_bonus
 LIBFT = libft/libft.a
 
 CC = cc
-CPPFLAGS = -I libft -I ../minilibx-linux
+CPPFLAGS = -I include -I libft -I ../minilibx-linux
 CFLAGS = -Wall -Wextra -Werror -O3
 LDFLAGS = -L libft -L ../minilibx-linux
 LDLIBS = -lft -lmlx -lXext -lX11
 
-HEADERS = so_long.h
+HEADERS = include/so_long.h
 SRC = \
-	map_from_file.c \
-	map_validate.c \
-	map_has_valid_path.c \
-	sprite_to_image.c \
-	sprites_from_files.c \
-	start_game.c \
-	init_viewport_from_screen_size.c \
-	refresh_display.c \
-	move_player.c \
-	so_long.c
+	src/map_from_file.c \
+	src/map_validate.c \
+	src/map_has_valid_path.c \
+	src/sprite_to_image.c \
+	src/sprites_from_files.c \
+	src/start_game.c \
+	src/init_viewport_from_screen_size.c \
+	src/refresh_display.c \
+	src/move_player.c \
+	src/so_long.c
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re bonus
@@ -26,6 +27,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(LDFLAGS) $(OBJ) -o $(NAME) $(LDLIBS)
 
 $(OBJ): $(HEADERS) Makefile
 
