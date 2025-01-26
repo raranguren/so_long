@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_viewport_from_screen_size.c                   :+:      :+:    :+:   */
+/*   init_viewport.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:35:52 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/19 13:46:29 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:46:25 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	init_map(t_map *map, int rows, int cols)
 	return (0);
 }
 
-int	init_viewport_for_screen_size(t_state *state)
+int	init_viewport(t_state *state)
 {
 	int		x;
 	int		y;

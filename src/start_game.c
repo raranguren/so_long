@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/22 12:52:46 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:46:49 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*start_game(t_state *state)
 {
 	if (sprites_from_files(state) < 0)
 		return ("Error loading sprites from files.");
-	if (init_viewport_for_screen_size(state))
+	if (init_viewport(state))
 		return ("Not enough memory for scroll system.");
 	state->window = mlx_new_window(state->mlx, \
 			SPRITE_SIZE * state->viewport.cols, \

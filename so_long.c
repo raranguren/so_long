@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/21 12:12:04 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 11:43:40 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,19 @@ static void	clear_map(t_map *map)
 
 static void	clear_state(t_state *state)
 {
+	void	**images;
+
 	clear_map(&state->map);
 	clear_map(&state->viewport);
 	if (state->window)
 		mlx_destroy_window(state->mlx, state->window);
-	if (state->sprites.empty)
-		mlx_destroy_image(state->mlx, state->sprites.empty);
-	if (state->sprites.wall)
-		mlx_destroy_image(state->mlx, state->sprites.wall);
-	if (state->sprites.player)
-		mlx_destroy_image(state->mlx, state->sprites.player);
-	if (state->sprites.collectible)
-		mlx_destroy_image(state->mlx, state->sprites.collectible);
-	if (state->sprites.exit)
-		mlx_destroy_image(state->mlx, state->sprites.exit);
+	if (state->images)
+	{
+		images = state->images;
+		while (*images)
+			mlx_destroy_image(state->mlx, *images++);
+		free(state->images);
+	}
 	if (state->mlx)
 	{
 		mlx_destroy_display(state->mlx);

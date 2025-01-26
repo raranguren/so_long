@@ -1,28 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_to_image.c                                  :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 13:23:26 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 11:33:15 by rarangur         ###   ########.fr       */
+/*   Created: 2025/01/03 17:31:03 by rarangur          #+#    #+#             */
+/*   Updated: 2025/01/26 12:04:49 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	*sprite_to_image(t_state *state, char code)
-{
-	if (code == '0')
-		return (state->images[IMAGE_INDEX_0]);
-	if (code == '1')
-		return (state->images[IMAGE_INDEX_1]);
-	if (code == 'P')
-		return (state->images[IMAGE_INDEX_P]);
-	if (code == 'C')
-		return (state->images[IMAGE_INDEX_C]);
-	if (code == 'E')
-		return (state->images[IMAGE_INDEX_E]);
-	return (NULL);
-}
+#include "so_long_bonus.h"
