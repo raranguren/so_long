@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:28:22 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 16:06:48 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 18:33:01 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void	move_patrols(t_map *map)
 			code = map->grid[y][x];
 			if (code >= '6' && code <= '9')
 			{
-				map->grid[y][x] = '0';
+				map->grid[y][x] = '.';
 				move_patrols(map);
+				map->grid[y][x] = '0';
 				move_patrol(map->grid, x, y, code);
 				return ;
 			}
