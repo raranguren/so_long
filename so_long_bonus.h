@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 12:41:46 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:12:45 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_BONUS_H
 
 # include "so_long.h"
+
+# define PATROL_RADIUS 5
 
 # define IMAGE_INDEX_2_0 5
 # define SPRITE_FILE_2_0 "textures/wave1.xpm"
@@ -91,5 +93,10 @@
 # define SPRITE_FILE_D_1 "textures/dead2.xpm"
 # define IMAGE_INDEX_D_2 37
 # define SPRITE_FILE_D_2 "textures/dead3.xpm"
+
+# define COUNT_IMAGES 38
+
+void	move_patrols(t_map *map);
+void	init_patrols(t_map *map);
 
 #endif
