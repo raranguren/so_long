@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 17:12:45 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:34:46 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,12 @@
 # define SPRITE_FILE_D_2 "textures/dead3.xpm"
 
 # define COUNT_IMAGES 38
+# define ANIMATIONS_INDEX 5
+# define FRAMES_PER_IMAGE 4000
+# define MAX_LOOPS_AFTER_ENDED 10
 
 void	move_patrols(t_map *map);
 void	init_patrols(t_map *map);
+void	decorate_map(t_map *map);
 
 #endif

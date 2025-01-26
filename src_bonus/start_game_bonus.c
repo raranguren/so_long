@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 17:48:14 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:33:25 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,48 @@ static int	key_hook(int keycode, t_state *state)
 
 static int	expose_hook(t_state *state)
 {
-	int	x;
 	int	y;
 
 	y = 0;
 	while (y < state->viewport.rows)
 	{
-		x = 0;
-		while (x < state->viewport.cols)
-		{
-			state->viewport.grid[y][x] = 0;
-			x++;
-		}
+		ft_bzero(state->viewport.grid[y], state->viewport.cols);
 		y++;
 	}
-	move_player(state, 0, 0);
+	return (0);
+}
+
+static int	frame_hook(t_state *state)
+{
+	static int	frame;
+	int			i;
+	void		*temp;
+
+	if (++frame < FRAMES_PER_IMAGE)
+		return (0);
+	frame = 0;
+	i = ANIMATIONS_INDEX;
+	while (i < COUNT_IMAGES)
+	{
+		temp = state->images[i];
+		state->images[i] = state->images[i + 1];
+		state->images[i + 1] = state->images[i + 2];
+		state->images[i + 2] = temp;
+		i += 3;
+	}
+	if (state->ended >= 1)
+	{
+		state->ended++;
+		if (state->ended >= MAX_LOOPS_AFTER_ENDED)
+			destroy_window_hook(state);
+	}
+	refresh_display(state);
 	return (0);
 }
 
 char	*start_game(t_state *state)
 {
+	decorate_map(&state->map);
 	init_patrols(&state->map);
 	if (sprites_from_files(state) < 0)
 		return ("Error loading sprites from files.");
@@ -70,6 +92,7 @@ char	*start_game(t_state *state)
 	mlx_expose_hook(state->window, expose_hook, state);
 	mlx_key_hook(state->window, key_hook, state);
 	mlx_hook(state->window, DestroyNotify, None, destroy_window_hook, state);
+	mlx_loop_hook(state->mlx, frame_hook, state);
 	mlx_loop(state->mlx);
 	return (0);
 }

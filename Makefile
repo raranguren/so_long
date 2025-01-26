@@ -25,13 +25,14 @@ SRC_BONUS = \
 	src/map_validate.c \
 	src/map_has_valid_path.c \
 	src/init_viewport.c \
-	src/refresh_display.c \
+	src_bonus/refresh_display_bonus.c \
 	src_bonus/sprite_to_image_bonus.c \
 	src_bonus/sprites_from_files_bonus.c \
 	src_bonus/start_game_bonus.c \
 	src_bonus/move_player_bonus.c \
 	src_bonus/move_patrols_bonus.c \
 	src_bonus/init_patrols_bonus.c \
+	src_bonus/decorate_map_bonus.c \
 	so_long.c
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
