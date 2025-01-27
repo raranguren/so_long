@@ -1,11 +1,16 @@
 NAME = so_long
 NAME_BONUS = so_long_bonus
-LIBFT = libft/libft.a
+
+MLX_DIR = ../minilibx-linux
+MLX_REPO = git@github.com:42Paris/minilibx-linux.git
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
-CPPFLAGS = -I. -Ilibft -I../minilibx-linux
+CPPFLAGS = -I. -I$(LIBFT_DIR) -I$(MLX_DIR)
 CFLAGS = -Wall -Wextra -Werror -O3
-LDFLAGS = -Llibft -L../minilibx-linux
+LDFLAGS = -L$(LIBFT_DIR) -L$(MLX_DIR)
 LDLIBS = -lft -lmlx -lXext -lX11
 
 HEADERS = so_long.h
@@ -37,7 +42,7 @@ SRC_BONUS = \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus mlx
 
 all: $(NAME)
 bonus: $(NAME_BONUS)
@@ -47,7 +52,12 @@ $(OBJ): $(HEADERS) Makefile
 $(OBJ_BONUS): $(HEADERS_BONUS) Makefile
 
 $(LIBFT):
-	make -C libft all clean --silent
+	make -C $(LIBFT_DIR) all clean --silent
+
+mlx: $(MLX)
+$(MLX):
+	git clone $(MLX_REPO) $(MLX_DIR)
+	make -C $(MLX_DIR)
 
 clean:
 	make -C libft fclean --silent
