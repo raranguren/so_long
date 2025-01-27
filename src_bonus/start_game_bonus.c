@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 20:33:25 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:46:32 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,15 @@ static int	expose_hook(t_state *state)
 	return (0);
 }
 
-static int	frame_hook(t_state *state)
+static int	loop_hook(t_state *state)
 {
-	static int	frame;
+	static int	loops;
 	int			i;
 	void		*temp;
 
-	if (++frame < FRAMES_PER_IMAGE)
+	if (++loops < LOOPS_PER_ANIMATION)
 		return (0);
-	frame = 0;
+	loops = 0;
 	i = ANIMATIONS_INDEX;
 	while (i < COUNT_IMAGES)
 	{
@@ -69,8 +69,8 @@ static int	frame_hook(t_state *state)
 	if (state->ended >= 1)
 	{
 		state->ended++;
-		if (state->ended >= MAX_LOOPS_AFTER_ENDED)
-			destroy_window_hook(state);
+		if (state->ended >= ANIMATIONS_AFTER_ENDED)
+			return (destroy_window_hook(state));
 	}
 	refresh_display(state);
 	return (0);
@@ -92,7 +92,7 @@ char	*start_game(t_state *state)
 	mlx_expose_hook(state->window, expose_hook, state);
 	mlx_key_hook(state->window, key_hook, state);
 	mlx_hook(state->window, DestroyNotify, None, destroy_window_hook, state);
-	mlx_loop_hook(state->mlx, frame_hook, state);
+	mlx_loop_hook(state->mlx, loop_hook, state);
 	mlx_loop(state->mlx);
 	return (0);
 }
