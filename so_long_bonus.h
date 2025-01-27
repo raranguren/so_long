@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/27 19:57:28 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:31:57 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@
 # define ANIMATIONS_AFTER_ENDED 10
 
 // animation speed. Recommended values depending on the machine:
-//   |CLUSTER|VALGRIND|LOOPS_PER_ANIMATION|
-//   |bess-f3|      no|              20000|
-//   |bess-f3|     yes|               2800|
-# define LOOPS_PER_ANIMATION 20000
+//   |CLUSTER        |VALGRIND|LOOPS_PER_ANIMATION|
+//   |bess-f3        |      no|              20000|
+//   |bess-f3        |     yes|               2800|
+//   |bess-f2 bess-f4|      no|              60000|
+//   |bess-f2 bess-f4|     yes|               7500|
+# define LOOPS_PER_ANIMATION 60000
 
 // indexes and files for bonus images
 // They all have the same number of images (3) (see loop_hook function)

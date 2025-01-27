@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:47:17 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 20:27:11 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:37:29 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	decorate_wall(char **grid, int x, int y)
 		return ;
 	if (grid[y - 1][x] == '4' || grid[y - 1][x] == '3')
 	{
+		if (grid[y][x - 1] == '3' && grid[y][x + 1] == '3')
+			return ;
 		grid[y][x] = '3';
 		return ;
 	}
