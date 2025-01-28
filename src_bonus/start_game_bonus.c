@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/27 19:46:32 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:59:02 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char	*start_game(t_state *state)
 			SPRITE_SIZE * state->viewport.rows, WINDOW_TITLE);
 	if (!state->window)
 		return ("Unable to create a window.");
+	mlx_set_font(state->mlx, state->window, FONT_NAME);
 	mlx_expose_hook(state->window, expose_hook, state);
 	mlx_key_hook(state->window, key_hook, state);
 	mlx_hook(state->window, DestroyNotify, None, destroy_window_hook, state);

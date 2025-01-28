@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/27 21:31:57 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:02:15 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "so_long.h"
 
+// Font for the text (man xfontsel)
+# define FONT_NAME "-schumacher-*-*-*-*-*-16-*-*-*-*-*-*-*"
+
 // half the distance between patrol spawns
 # define PATROL_RADIUS 5
 
@@ -22,12 +25,12 @@
 # define ANIMATIONS_AFTER_ENDED 10
 
 // animation speed. Recommended values depending on the machine:
-//   |CLUSTER        |VALGRIND|LOOPS_PER_ANIMATION|
-//   |bess-f3        |      no|              20000|
-//   |bess-f3        |     yes|               2800|
-//   |bess-f2 bess-f4|      no|              60000|
-//   |bess-f2 bess-f4|     yes|               7500|
-# define LOOPS_PER_ANIMATION 60000
+//   |CLUSTER          |VALGRIND|LOOPS_PER_ANIMATION|
+//   |bess-f3  paul-f5B|      no|              20000|
+//   |bess-f3  paul-f5B|     yes|               2800|
+//   |bess-f2  bess-f4 |      no|              60000|
+//   |bess-f2  bess-f4 |     yes|               7500|
+# define LOOPS_PER_ANIMATION 20000
 
 // indexes and files for bonus images
 // They all have the same number of images (3) (see loop_hook function)
