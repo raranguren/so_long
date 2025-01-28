@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/28 15:26:36 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:41:58 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	expose_hook(t_state *state)
 		ft_bzero(state->viewport.grid[y], state->viewport.cols);
 		y++;
 	}
+	move_player(state, 0, 0);
 	return (0);
 }
 
