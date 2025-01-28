@@ -6,11 +6,36 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 13:28:22 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 18:33:01 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:06:40 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+/*
+ * Gives the code for the rotated patrol.
+ * From time to time, it changes the direction of the rotation.
+ */
+void	rotate_patrol(char *code)
+{
+	static int	rotations;
+
+	if (rotations > 10)
+	{
+		(*code)++;
+		if (*code > '9')
+			*code = '6';
+	}
+	else
+	{
+		(*code)--;
+		if (*code < '6')
+			*code = '9';
+	}
+	rotations++;
+	if (rotations > 20)
+		rotations = 0;
+}
 
 /*
  * Changes the grid depending on the original code of the patrol.
@@ -43,11 +68,7 @@ void	move_patrol(char **grid, int x, int y, char code)
 		y += yv;
 	}
 	else
-	{
-		code++;
-		if (code > '9')
-			code = '6';
-	}
+		rotate_patrol(&code);
 	grid[y][x] = code;
 }
 

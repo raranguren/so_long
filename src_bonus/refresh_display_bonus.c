@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:15:49 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/28 15:53:03 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:07:12 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	clear_on_animation(t_state *state)
 		ft_bzero(state->viewport.grid[y], state->viewport.cols);
 		y++;
 	}
-	mlx_clear_window(state->mlx, state->window);	
+	mlx_clear_window(state->mlx, state->window);
 }
 
 void	refresh_display(t_state *state)
