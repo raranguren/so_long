@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 13:23:26 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 20:30:53 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:50:42 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	*sprite_to_image(t_state *state, char code)
 		return (patrol_to_image(state, code));
 	if (code >= '1' && code <= '4')
 		return (wall_to_image(state, code));
+	if (code == 'W')
+		return (state->images[IMAGE_INDEX_W_0]);
 	return (NULL);
 }
