@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 21:57:41 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/09 22:49:25 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:26:15 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ static int	grow_p(t_map *map, int x, int y)
 	if (map->grid[y][x + 1] == 'P' || map->grid[y][x - 1] == 'P' \
 			|| map->grid[y + 1][x] == 'P' || map->grid[y - 1][x] == 'P')
 	{
-		map->grid[y][x] = 'P';
+		if (map->grid[y][x] == 'E')
+			map->grid[y][x] = '1';
+		else
+			map->grid[y][x] = 'P';
 		return (1);
 	}
 	return (0);
