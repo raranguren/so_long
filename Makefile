@@ -38,6 +38,7 @@ SRC_BONUS = \
 	src_bonus/move_patrols_bonus.c \
 	src_bonus/init_patrols_bonus.c \
 	src_bonus/decorate_map_bonus.c \
+	src_bonus/player_win_bonus.c \
 	so_long.c
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)

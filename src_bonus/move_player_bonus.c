@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 17:44:42 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:22:40 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	move_player(t_state *state, int dir_x, int dir_y)
 	find_player_in_map(&state->map, &player_x, &player_y);
 	destination = state->map.grid[player_y + dir_y][player_x + dir_x];
 	if (destination == 'E' && !collectibles_exist(&state->map))
-		state->ended = 1;
+		player_win(state, player_x, player_y);
 	if (!(destination >= '1' && destination <= '4') && destination != 'E')
 	{
 		state->map.grid[player_y][player_x] = '0';

@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:15:49 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/27 22:25:46 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:08:45 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,17 @@ static void	moves_display(t_state *state)
 		if (!nbr)
 			return ;
 		ft_strlcpy(str + 11, nbr, 13);
+		free(nbr);
 	}
 	mlx_string_put(state->mlx, state->window, 10, 28, 0xFFFFFF, str);
 }
 
 void	clear_on_animation(t_state *state)
 {
-	static void	*first_animated_image;
+	static void	*already_animated_image;
 	int			y;
 
-	if (first_animated_image == state->images[ANIMATIONS_INDEX])
+	if (already_animated_image == state->images[ANIMATIONS_FIRST_INDEX])
 		return ;
 	y = 0;
 	while (y < state->viewport.rows)
