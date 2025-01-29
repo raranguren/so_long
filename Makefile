@@ -9,7 +9,7 @@ MLX = $(MLX_DIR)/libmlx.a
 
 CC = cc
 CPPFLAGS = -I. -I$(LIBFT_DIR) -I$(MLX_DIR)
-CFLAGS = -Wall -Wextra -Werror -O3
+CFLAGS = -Wall -Wextra -Werror -g
 LDFLAGS = -L$(LIBFT_DIR) -L$(MLX_DIR)
 LDLIBS = -lft -lmlx -lXext -lX11
 

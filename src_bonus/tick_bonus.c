@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 01:03:33 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/29 03:44:39 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/29 22:31:04 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,26 @@
 #include <time.h>
 
 /*
- * Returns 1 only when enough time has passed to animate the sprites. 
- * It regularly checks the system time to maintain the speed.
+ * Returns 0 unless a fixed interval of time has passed. 
+ * The interval is defined by the variable ANIMATIONS_PER_MINUTE
+ *
  */
 int	tick(void)
 {
-	static int		loops_this_tick;
-	static int		loops_this_second;
-	static int		loops_per_tick = 10000;
-	static time_t	before;
-	static time_t	now;
+	static clock_t	next_tick;
+	static clock_t	interval;
+	clock_t			now;
 
-	loops_this_tick++;
-	if (loops_this_tick % 1000 == 0)
+	if (!interval)
+		interval = CLOCKS_PER_SEC * 60 / ANIMATION_SPEED;
+	now = clock();
+	if (!next_tick)
 	{
-		time(&now);
-		if (!before)
-			before = now;
+		next_tick = now + interval;
+		return (0);
 	}
-	if (now > before)
-	{
-		loops_per_tick = ((loops_this_second + loops_this_tick) * 60 \
-						 / ANIMATION_SPEED / (now - before) \
-						 + loops_per_tick) / (now - before + 1);
-		loops_this_second = 0;
-		before = now;
-		ft_printf("Speed %i %i\n", loops_per_tick, loops_per_tick * ANIMATION_SPEED / 60);
-	}
-	if (loops_this_tick > loops_per_tick)
-	{
-		loops_this_second += loops_this_tick;
-		loops_this_tick = 0;
-	}
-	return (loops_this_tick == 0);
+	if (now < next_tick)
+		return (0);
+	next_tick += interval;
+	return (1);
 }
