@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/28 16:41:58 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/29 01:02:34 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ static int	expose_hook(t_state *state)
 
 static int	loop_hook(t_state *state)
 {
-	static int	loops;
 	int			i;
 	void		*temp;
 
-	if (++loops < LOOPS_PER_ANIMATION)
+	if (!tick())
 		return (0);
-	loops = 0;
 	i = ANIMATIONS_FIRST_INDEX;
 	while (i < COUNT_IMAGES)
 	{
