@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 01:03:33 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/29 22:31:04 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 22:59:10 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	tick(void)
 	clock_t			now;
 
 	if (!interval)
-		interval = CLOCKS_PER_SEC * 60 / ANIMATION_SPEED;
+		interval = (CLOCKS_PER_SEC * 60) / ANIMATION_SPEED;
 	now = clock();
 	if (!next_tick)
 	{

@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/29 22:33:42 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 23:02:12 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define ANIMATIONS_AFTER_ENDED 20
 
 // The amount of animation frames per minute (180 for a full loop per second)
-# define ANIMATION_SPEED 242
+# define ANIMATION_SPEED 300
 
 // indexes and files for bonus images
 // They all have the same number of images (3) (see loop_hook function)

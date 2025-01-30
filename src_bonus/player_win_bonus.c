@@ -6,7 +6,7 @@
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:23:43 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/28 16:36:53 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:05:02 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ void	player_win(t_state *state, int exit_x, int exit_y)
 	state->map.grid[exit_y][exit_x] = 'W';
 	state->ended = 1;
 	mlx_clear_window(state->mlx, state->window);
+	ft_printf("You won!\n");
 }

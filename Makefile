@@ -70,13 +70,22 @@ $(MLX):
 	git clone $(MLX_REPO) $(MLX_DIR)
 	make -C $(MLX_DIR)
 
+MAPS = \
+	maps/1-tutorial.ber \
+	maps/2-easy.ber \
+	maps/3-fear.ber \
+	maps/4-pauses.ber \
+	maps/5-big.ber \
+	maps/6-impossible.ber \
+	maps/7-hungry.ber \
+	maps/8-yolo.ber \
+	maps/9-so-long.ber
+WIN = You won!
+
 play: bonus install
-	clear
-	@echo ------------------------------------
-	@echo Double click a map file or press Esc
-	@echo ------------------------------------
-	@while MAP=$$(zenity \
-		--file-selection \
-		--filename="maps/*.ber" \
-		--title="Select a map to play" \
-	); do (./$(NAME_BONUS) "$$MAP") ; done
+	@for MAP in $(MAPS); do \
+		echo Playing $$MAP ;\
+		while [ "`./$(NAME_BONUS) $$MAP`" != "$(WIN)" ] ; do \
+			:; \
+		done; \
+	done
