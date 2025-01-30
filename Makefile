@@ -44,7 +44,7 @@ SRC_BONUS = \
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-.PHONY: all clean fclean re bonus mlx
+.PHONY: all clean fclean re bonus mlx install play
 
 all: $(NAME)
 bonus: $(NAME_BONUS)
@@ -56,11 +56,6 @@ $(OBJ_BONUS): $(HEADERS_BONUS) Makefile
 $(LIBFT):
 	make -C $(LIBFT_DIR) all clean --silent
 
-mlx: $(MLX)
-$(MLX):
-	git clone $(MLX_REPO) $(MLX_DIR)
-	make -C $(MLX_DIR)
-
 clean:
 	make -C libft fclean --silent
 	rm -fr $(OBJ) $(OBJ_BONUS)
@@ -69,3 +64,19 @@ fclean: clean
 	rm -fr $(NAME) $(NAME_BONUS)
 
 re: fclean all
+
+mlx install: $(MLX)
+$(MLX):
+	git clone $(MLX_REPO) $(MLX_DIR)
+	make -C $(MLX_DIR)
+
+play: bonus install
+	clear
+	@echo ------------------------------------
+	@echo Double click a map file or press Esc
+	@echo ------------------------------------
+	@while MAP=$$(zenity \
+		--file-selection \
+		--filename="maps/*.ber" \
+		--title="Select a map to play" \
+	); do (./$(NAME_BONUS) "$$MAP") ; done
