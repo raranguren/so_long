@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:21:40 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/28 15:57:03 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 23:11:01 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	move_patrols_and_die(t_state *state, int x, int y)
 	{
 		grid[y][x] = 'D';
 		state->ended = 1;
+		ft_printf("You lost...");
 	}
 }
 

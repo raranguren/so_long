@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:33:38 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/30 23:02:12 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 23:11:35 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define PATROL_RADIUS 5
 
 // animation loops to show before ending the game
-# define ANIMATIONS_AFTER_ENDED 20
+# define ANIMATIONS_AFTER_ENDED 10
 
 // The amount of animation frames per minute (180 for a full loop per second)
 # define ANIMATION_SPEED 300

@@ -81,11 +81,16 @@ MAPS = \
 	maps/8-yolo.ber \
 	maps/9-so-long.ber
 WIN = You won!
+TRY = You lost...
 
 play: bonus install
-	@for MAP in $(MAPS); do \
-		echo Playing $$MAP ;\
-		while [ "`./$(NAME_BONUS) $$MAP`" != "$(WIN)" ] ; do \
-			:; \
-		done; \
+	RESULT="$(WIN)" ; \
+	for MAP in $(MAPS) ; do \
+		if [ "$$RESULT" ] ; then \
+			echo Playing $$MAP ; \
+			RESULT="$(TRY)" ; \
+			while [ "$$RESULT" = "$(TRY)" ] ; do \
+				RESULT="`./$(NAME_BONUS) $$MAP`" ; \
+			done ; \
+		fi ; \
 	done
