@@ -6,24 +6,16 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/26 11:46:49 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:17:21 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	destroy_window_hook(t_state *state)
-{
-	mlx_destroy_window(state->mlx, state->window);
-	state->window = NULL;
-	mlx_loop_end(state->mlx);
-	return (0);
-}
-
 static int	key_hook(int keycode, t_state *state)
 {
 	if (keycode == XK_Escape)
-		return (destroy_window_hook(state));
+		return (mlx_loop_end(state->mlx));
 	else if (keycode == XK_w || keycode == XK_Up)
 		move_player(state, 0, -1);
 	else if (keycode == XK_s || keycode == XK_Down)
@@ -33,7 +25,7 @@ static int	key_hook(int keycode, t_state *state)
 	else if (keycode == XK_d || keycode == XK_Right)
 		move_player(state, 1, 0);
 	if (state->ended)
-		destroy_window_hook(state);
+		mlx_loop_end(state->mlx);
 	return (0);
 }
 
@@ -70,7 +62,7 @@ char	*start_game(t_state *state)
 		return ("Unable to create a window.");
 	mlx_expose_hook(state->window, expose_hook, state);
 	mlx_key_hook(state->window, key_hook, state);
-	mlx_hook(state->window, DestroyNotify, None, destroy_window_hook, state);
+	mlx_hook(state->window, DestroyNotify, None, mlx_loop_end, state->mlx);
 	mlx_loop(state->mlx);
 	return (0);
 }
