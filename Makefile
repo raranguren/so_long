@@ -84,7 +84,7 @@ WIN = You won!
 TRY = You lost...
 
 play: install bonus
-	RESULT="$(WIN)" ; \
+	@RESULT="$(WIN)" ; \
 	for MAP in $(MAPS) ; do \
 		if [ "$$RESULT" ] ; then \
 			echo Playing $$MAP ; \
