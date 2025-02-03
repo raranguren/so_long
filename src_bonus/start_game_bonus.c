@@ -81,7 +81,7 @@ char	*start_game(t_state *state)
 	if (!state->window)
 		return ("Unable to create a window.");
 	mlx_expose_hook(state->window, expose_hook, state);
-	mlx_key_hook(state->window, key_hook, state);
+	mlx_hook(state->window, 2, 1L << 0, key_hook, state);
 	mlx_hook(state->window, DestroyNotify, None, mlx_loop_end, state->mlx);
 	mlx_loop_hook(state->mlx, loop_hook, state);
 	mlx_loop(state->mlx);
