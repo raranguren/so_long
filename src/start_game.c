@@ -6,7 +6,7 @@
 /*   By: rarangur <rarangur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:57:21 by rarangur          #+#    #+#             */
-/*   Updated: 2025/01/30 05:17:21 by rarangur         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:26:54 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*start_game(t_state *state)
 	if (!state->window)
 		return ("Unable to create a window.");
 	mlx_expose_hook(state->window, expose_hook, state);
-	mlx_hook(state->window, 2, 1L << 0, key_hook, state);
+	mlx_hook(state->window, KeyPress, KeyPressMask, key_hook, state);
 	mlx_hook(state->window, DestroyNotify, None, mlx_loop_end, state->mlx);
 	mlx_loop(state->mlx);
 	return (0);
